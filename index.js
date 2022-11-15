@@ -28,6 +28,14 @@ async function run(){
       const result = await taskCollection.insertOne(task)
       res.send(result)
     })
+
+     // get all data
+     app.get('/allImages',async(req,res)=>{
+      const query={}
+      const cursor = await taskCollection.find(query);
+      const result = await cursor.toArray();
+      res.send(result)
+    });
      
   }
   catch{
